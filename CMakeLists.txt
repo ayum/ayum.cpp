@@ -45,8 +45,15 @@ add_subdirectory(libs/com/github/ayum)
 #     set(CMAKE_INSTALL_PREFIX "/opt/ayum" CACHE PATH "..." FORCE)
 # endif()
 
+configure_file(ayum-config.cmake.in
+  ayum-config.cmake
+  COPYONLY
+)
+
 set(EXCLUDE_FROM_ALL_IF_HAS_PARENT "")
 if(hasParent)
 set(EXCLUDE_FROM_ALL_IF_HAS_PARENT EXCLUDE_FROM_ALL)
 endif()
-install(EXPORT ayum DESTINATION share/ayum NAMESPACE ayum:: ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
+install(EXPORT ayum_targets DESTINATION share/ayum NAMESPACE ayum:: ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ayum-config.cmake DESTINATION share/ayum ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})

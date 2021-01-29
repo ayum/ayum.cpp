@@ -21,7 +21,7 @@ endif()
 
 add_library(ayum::dld ALIAS ayum-dld)
 
-install(TARGETS ayum-dld EXPORT ayum
+install(TARGETS ayum-dld EXPORT ayum_targets
     ARCHIVE
     PUBLIC_HEADER DESTINATION include/ayum
 )
