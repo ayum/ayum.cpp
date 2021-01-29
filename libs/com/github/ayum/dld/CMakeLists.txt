@@ -1,6 +1,9 @@
 add_library(com.github.ayum.dld STATIC ${EXCLUDE_FROM_ALL_IF_HAS_PARENT}
-    dld.cpp dld.hpp dld.test.cpp
+    dld.cpp dld.hpp
 )
+if(BUILD_TESTING)
+target_sources(com.github.ayum.dld PRIVATE dld.test.cpp)
+endif()
 
 target_include_directories(com.github.ayum.dld INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

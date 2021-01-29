@@ -21,6 +21,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include_directories(SYSTEM external)
 
+option(BUILD_TESTING "Build tests and include it in library" OFF)
 include(CTest)
 include(FindPkgConfig)
 

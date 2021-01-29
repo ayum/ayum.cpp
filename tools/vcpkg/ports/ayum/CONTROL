@@ -2,3 +2,4 @@
 Source: ayum
 Version: 0.1.0
 Description: Unordered collection of c++ pieces of code
+Build-Depends: doctest
