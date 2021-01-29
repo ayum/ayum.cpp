@@ -25,8 +25,16 @@ option(BUILD_TESTING "Build tests and include it in library" OFF)
 include(CTest)
 include(FindPkgConfig)
 
+macro(_pmm)
+if(NOT VCPKG_TARGET_ARCHITECTURE)
+pmm(${ARGV})
+endif()
+endmacro()
+
+if(NOT VCPKG_TARGET_ARCHITECTURE)
 set(PMM_URL_BASE "file://${CMAKE_CURRENT_LIST_DIR}/tools/pmm")
 include(pmm.cmake)
+endif()
 
 endif()
 
@@ -41,4 +49,4 @@ set(EXCLUDE_FROM_ALL_IF_HAS_PARENT "")
 if(hasParent)
 set(EXCLUDE_FROM_ALL_IF_HAS_PARENT EXCLUDE_FROM_ALL)
 endif()
-install(EXPORT ayum DESTINATION share/ayum ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
+install(EXPORT ayum DESTINATION share/ayum NAMESPACE ayum:: ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})

@@ -1,5 +1,5 @@
 if(BUILD_TESTING AND NOT hasParent)
-pmm(VCPKG REVISION 2020.11-1 REQUIRES doctest)
+_pmm(VCPKG REVISION 2020.11-1 REQUIRES doctest)
 endif()
 
 add_subdirectory(dld)
