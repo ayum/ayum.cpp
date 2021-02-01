@@ -7,8 +7,8 @@ vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO ayum/ayum.github.com
-    REF 6b987d883901afed9b08dc6a69df757916fabc23
-    SHA512 52fa8f5548f61344c2135f5f67bfba75efb168d7620fabd86472b76a90a12d08dab1010dea99fad2b41f816712e5020df4c9c9d685c5f7addf942707632d2a14
+    REF 25696cc4da37d2434367aeba855cf1ef5462409b
+    SHA512 b3af3d2fd60a9692cf8da0974788fc2ce4ad7cdc3ec3661a16d29f69ec81380d308f5e92667d5a5e2a51a6e10d3d4fcdc6e80421ae66af0ddf0d8124039f55af
     HEAD_REF main
 )
 
@@ -25,7 +25,11 @@ else() #Linux/Unix/Darwin
     vcpkg_fixup_cmake_targets(CONFIG_PATH lib/cmake/ayum)
 endif()
 
-file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include ${CURRENT_PACKAGES_DIR}/debug/share)
+file(REMOVE_RECURSE
+    "${CURRENT_PACKAGES_DIR}/debug"
+    "${CURRENT_PACKAGES_DIR}/bin"
+    "${CURRENT_PACKAGES_DIR}/lib"
+)
 
 # Handle copyright
-file(INSTALL ${SOURCE_PATH}/LICENSE DESTINATION ${CURRENT_PACKAGES_DIR}/share/ayum RENAME copyright)
+file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/ayum" RENAME copyright)
