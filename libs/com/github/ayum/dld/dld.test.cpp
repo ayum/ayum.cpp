@@ -1,3 +1,5 @@
+#ifdef COM_GITHUB_AYUM_DLD_TEST
+
 #include "dld.hpp"
 
 #include <doctest/doctest.h>
@@ -22,3 +24,5 @@ TEST_CASE("testing insertions, deletions, edits") {
     CHECK(damerau_levenshtein_distance("b", "abb") == 2);
     CHECK(damerau_levenshtein_distance("rosettacode", "raisethysword") == 8);
 }
+
+#endif  // COM_GITHUB_AYUM_DLD_TEST

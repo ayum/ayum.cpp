@@ -22,7 +22,7 @@ vcpkg_install_cmake()
 if (NOT VCPKG_CMAKE_SYSTEM_NAME OR VCPKG_CMAKE_SYSTEM_NAME STREQUAL "windows" OR VCPKG_CMAKE_SYSTEM_NAME STREQUAL "WindowsStore") #Windows
     vcpkg_fixup_cmake_targets(CONFIG_PATH CMake)
 else() #Linux/Unix/Darwin
-    vcpkg_fixup_cmake_targets(CONFIG_PATH share/ayum)
+    vcpkg_fixup_cmake_targets(CONFIG_PATH lib/cmake/ayum)
 endif()
 
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include ${CURRENT_PACKAGES_DIR}/debug/share)

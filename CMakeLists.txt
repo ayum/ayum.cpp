@@ -21,7 +21,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include_directories(SYSTEM external)
 
-option(BUILD_TESTING "Build tests and include it in library" OFF)
+option(BUILD_TESTING "Build tests and include it in library" ON)
 include(CTest)
 include(FindPkgConfig)
 
@@ -45,15 +45,26 @@ add_subdirectory(libs/com/github/ayum)
 #     set(CMAKE_INSTALL_PREFIX "/opt/ayum" CACHE PATH "..." FORCE)
 # endif()
 
-configure_file(ayum-config.cmake.in
-  ayum-config.cmake
-  COPYONLY
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    ayum-config.cmake.in
+    ayum-config.cmake
+    INSTALL_DESTINATION lib/cmake/ayum
+)
+write_basic_package_version_file(
+    ayum-config-version.cmake
+    COMPATIBILITY AnyNewerVersion
+    ARCH_INDEPENDENT
 )
 
 set(EXCLUDE_FROM_ALL_IF_HAS_PARENT "")
 if(hasParent)
 set(EXCLUDE_FROM_ALL_IF_HAS_PARENT EXCLUDE_FROM_ALL)
 endif()
-install(EXPORT ayum_targets DESTINATION share/ayum NAMESPACE ayum:: ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
+install(EXPORT ayum_targets DESTINATION lib/cmake/ayum NAMESPACE ayum:: ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ayum-config.cmake DESTINATION share/ayum ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/ayum-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/ayum-config-version.cmake
+    DESTINATION lib/cmake/ayum ${EXCLUDE_FROM_ALL_IF_HAS_PARENT}
+)
