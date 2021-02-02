@@ -66,7 +66,17 @@ install(EXPORT ayum_targets DESTINATION lib/cmake/ayum NAMESPACE ayum:: ${EXCLUD
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/ayum-config.cmake
     ${CMAKE_CURRENT_BINARY_DIR}/ayum-config-version.cmake
-    ${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/GitHelper.cmake
-    ${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/CoverageHelper.cmake
     DESTINATION lib/cmake/ayum ${EXCLUDE_FROM_ALL_IF_HAS_PARENT}
+)
+
+install(FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/GitHelper.cmake
+    DESTINATION lib/cmake/
+    RENAME AyumGitHelper.cmake ${EXCLUDE_FROM_ALL_IF_HAS_PARENT}
+)
+
+install(FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/CoverageHelper.cmake
+    DESTINATION lib/cmake/
+    RENAME AyumCoverageHelper.cmake ${EXCLUDE_FROM_ALL_IF_HAS_PARENT}
 )
