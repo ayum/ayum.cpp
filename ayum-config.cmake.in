@@ -3,4 +3,6 @@
 include("${CMAKE_CURRENT_LIST_DIR}/ayum_targets.cmake")
 check_required_components("@PROJECT_NAME@")
 
+find_package(doctest QUIET)
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
