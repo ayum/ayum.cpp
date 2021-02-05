@@ -1,8 +1,6 @@
 add_library(ayum-dld INTERFACE ${EXCLUDE_FROM_ALL_IF_HAS_PARENT})
 
 target_sources(ayum-dld INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/dld.cpp>
-    $<INSTALL_INTERFACE:include/ayum/dld.cpp>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/dld.hpp>
     $<INSTALL_INTERFACE:include/ayum/dld.hpp>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/dld.test.cpp>
@@ -14,7 +12,7 @@ target_include_directories(ayum-dld INTERFACE
     $<INSTALL_INTERFACE:include/ayum>
 )
 set_target_properties(ayum-dld PROPERTIES
-    PUBLIC_HEADER "dld.hpp;dld.cpp;dld.test.cpp"
+    PUBLIC_HEADER "dld.hpp;dld.test.cpp"
     EXPORT_NAME dld
 )
 
